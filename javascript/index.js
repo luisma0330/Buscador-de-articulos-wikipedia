@@ -2,19 +2,12 @@ function search(s){
     var ids = "";
     var links = [];
     var results = [];
-    fetch('https://es.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srsearch='+s)
+    fetch('https://es.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srsearch='+ s)
     .then(response => {
         return response.json();
     })
     .then(result => {
         results = result.query.search;
-        for(var i=0; i<results.length; i++){
-            if(results[i+1] != null){
-                ids = ids + results[i].pageid + "|";
-            }else{
-                ids = ids + results[i].pageid;
-            }
-        }   
     })
     .then(g => {
         document.getElementById("output").innerHTML="";
