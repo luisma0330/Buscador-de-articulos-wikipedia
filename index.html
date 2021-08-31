@@ -7,20 +7,23 @@
     <title>Buscador en Wikipedia</title>
 </head>
 <body>
+    <h1>Buscador de articulos en Wikipedia</h1>
     <label for="input">Título del artículo:</label>
     <input id="input" type="text">
-    <br>
     <label for="ordenar">Buscar por:</label>
     <select name="ordenar" id="sort">
         <option value="1">Relevancia</option>
         <option value="2">Fecha</option>
         <option value="3">Tamaño de la página</option>
     </select>
-    <br>
     <button onclick="search(document.querySelector('#input').value)">
         Buscar
     </button>
-    <div id="output"></div>
+    <br>
+    <div id="Resultados">
+        <h2>Resultados</h2>
+        <div id="output"></div>
+    </div>
     <script src="javascript/index.js"></script>
 </body>
 </html>
