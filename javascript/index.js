@@ -1,6 +1,4 @@
 function search(s){
-    var ids = "";
-    var links = [];
     var results = [];
     fetch('https://es.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srsearch='+ s)
     .then(response => {
@@ -8,6 +6,18 @@ function search(s){
     })
     .then(result => {
         results = result.query.search;
+    })
+    .then(o =>{
+        if(document.getElementById("sort").value === "fecha"){
+            results.sort(function (x, y) {
+                let a = new Date(x.timestamp),
+                    b = new Date(y.timestamp);
+                return a - b;
+            });
+        }
+        if(document.getElementById("sort").value === "size"){
+            results.sort((a,b) => a.size - b.size);
+        }
     })
     .then(g => {
         document.getElementById("output").innerHTML="";
